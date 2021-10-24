@@ -23,6 +23,9 @@ function App() {
         <Link href={'https://www.meetup.com/ethpuertorico/'} target={'_blank'}>
           MEET ETH PR
         </Link>
+        <Link href={'https://github.com/asooge/eth-pr'} target={'_blank'}>
+          CODE
+        </Link>
         {provider && (
           <iframe
             src="https://app.uniswap.org/#/swap?use=v1?outputCurrency=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359"
