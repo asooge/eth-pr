@@ -1,7 +1,7 @@
 import React from "react";
 import { readOnChainData } from './lib/default'
 
-import { Body, Button, Header, Image, WalletButton } from "./components";
+import { Body, Button, Header, Image, Link, WalletButton } from "./components";
 import logo from "./ethereumLogo.png";
 import useWeb3Modal from "./hooks/useWeb3Modal";
 
@@ -20,6 +20,9 @@ function App() {
         <Button hidden onClick={() => readOnChainData()}>
           Read On-Chain Balance
         </Button>
+        <Link href={'https://www.meetup.com/ethpuertorico/'} target={'_blank'}>
+          MEET ETH PR
+        </Link>
         {provider && (
           <iframe
             src="https://app.uniswap.org/#/swap?use=v1?outputCurrency=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359"
