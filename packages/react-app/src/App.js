@@ -36,6 +36,7 @@ function App() {
               minWidth: '300px',
               height: '720px',
             }}
+            title="uniswap-iframe"
             id="myId"
           />
         )}
