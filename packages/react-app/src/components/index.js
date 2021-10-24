@@ -52,3 +52,5 @@ export const Button = styled.button`
     outline: none;
   }
 `;
+
+export * from './Wallet'
