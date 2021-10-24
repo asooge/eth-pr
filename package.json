@@ -18,7 +18,8 @@
     "react-app:ipfs": "yarn workspace @project/react-app ipfs",
     "react-app:start": "yarn workspace @project/react-app start",
     "react-app:test": "yarn workspace @project/react-app test",
-    "start": "yarn run react-app:start"
+    "start": "yarn run react-app:start",
+    "test": "yarn run react-app:test"
   },
   "workspaces": {
     "packages": [
