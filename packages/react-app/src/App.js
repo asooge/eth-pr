@@ -14,17 +14,35 @@ function App() {
         <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
       </Header>
       <Body>
-        <h1>ETH PR</h1>
+        <h1 style={{ marginBottom: '0' }}>ETH PR</h1>
         <h3>coming soon</h3>
         <Image src={logo} alt="react-logo" />
-        <Button onClick={() => readOnChainData()}>
+        <Button hidden onClick={() => readOnChainData()}>
           Read On-Chain Balance
         </Button>
-        <Link href="https://ethereum.org/developers/#getting-started" style={{ marginTop: "8px" }}>
-          Learn Ethereum
+        <Link href={'https://www.meetup.com/ethpuertorico/'} target={'_blank'}>
+          MEET ETH PR
         </Link>
-        <Link href="https://reactjs.org">Learn React</Link>
-        <Link href="https://thegraph.com/docs/quick-start">Learn The Graph</Link>
+        {provider && (
+          <iframe
+            src="https://app.uniswap.org/#/swap?use=v1?outputCurrency=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359"
+            height="660px"
+            width="100%"
+
+            style={{
+              border: '0',
+              margin: '0 auto',
+              display: 'block',
+              borderRadius: '10px',
+              padding: '32px 0',
+              maxWidth: '500px',
+              minWidth: '300px',
+              height: '720px',
+            }}
+            title="uniswap-iframe"
+            id="myId"
+          />
+        )}
       </Body>
     </div>
   );
