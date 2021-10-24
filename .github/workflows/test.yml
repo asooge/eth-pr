@@ -1,0 +1,22 @@
+name: Test clean install
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test-all:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - run: yarn install
+      - run: yarn test
