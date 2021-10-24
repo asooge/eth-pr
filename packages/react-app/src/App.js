@@ -14,6 +14,8 @@ function App() {
         <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
       </Header>
       <Body>
+        <h1>ETH PR</h1>
+        <h3>coming soon</h3>
         <Image src={logo} alt="react-logo" />
         <Button onClick={() => readOnChainData()}>
           Read On-Chain Balance
