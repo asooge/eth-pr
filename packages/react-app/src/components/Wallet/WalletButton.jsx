@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Body, Button, Header, Image, Link } from "../";
-import { fetchAccount, readOnChainData } from '@project/react-app/src/lib/default'
+import { Button } from "../";
+import { fetchAccount } from '@project/react-app/src/lib/default'
 
 export function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
   const [account, setAccount] = useState("");
