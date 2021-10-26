@@ -1,4 +1,4 @@
-name: Test clean install
+name: Test and lint clean install
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   test-all:
-    name: Test
+    name: Test and lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,4 +19,6 @@ jobs:
           node-version: '14'
           cache: 'yarn'
       - run: yarn install
+      - run: yarn lint
+      - run: yarn format-check
       - run: yarn test

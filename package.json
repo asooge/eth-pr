@@ -22,6 +22,8 @@
     "react-app:test": "yarn workspace @project/react-app test",
     "start": "yarn run react-app:start",
     "test": "yarn run react-app:test",
+    "lint": "yarn workspace @project/react-app lint",
+    "format-check": "yarn workspace @project/react-app format-check",
     "prepare": "husky install"
   },
   "workspaces": {
