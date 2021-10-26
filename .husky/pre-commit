@@ -2,3 +2,4 @@
 . "$(dirname "$0")/_/husky.sh"
 
 yarn react-app:lint
+yarn react-app:format

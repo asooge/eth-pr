@@ -15,6 +15,7 @@
     "subgraph:deploy": "yarn workspace @project/subgraph deploy",
     "react-app:build": "yarn workspace @project/react-app build",
     "react-app:eject": "yarn workspace @project/react-app eject",
+    "react-app:format": "yarn workspace @project/react-app format",
     "react-app:ipfs": "yarn workspace @project/react-app ipfs",
     "react-app:lint": "yarn workspace @project/react-app lint",
     "react-app:start": "yarn workspace @project/react-app start",
