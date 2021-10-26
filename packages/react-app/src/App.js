@@ -1,17 +1,21 @@
-import React from "react";
+import React from 'react'
 import { readOnChainData } from './lib/default'
 
-import { Body, Button, Header, Image, Link, WalletButton } from "./components";
-import logo from "./ethereumLogo.png";
-import useWeb3Modal from "./hooks/useWeb3Modal";
+import { Body, Button, Header, Image, Link, WalletButton } from './components'
+import logo from './ethereumLogo.png'
+import useWeb3Modal from './hooks/useWeb3Modal'
 
 function App() {
-  const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
+  const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal()
 
   return (
     <div>
       <Header>
-        <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
+        <WalletButton
+          provider={provider}
+          loadWeb3Modal={loadWeb3Modal}
+          logoutOfWeb3Modal={logoutOfWeb3Modal}
+        />
       </Header>
       <Body>
         <h1 style={{ marginBottom: '0' }}>ETH PR</h1>
@@ -31,7 +35,6 @@ function App() {
             src="https://app.uniswap.org/#/swap?use=v1?outputCurrency=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359"
             height="660px"
             width="100%"
-
             style={{
               border: '0',
               margin: '0 auto',
@@ -48,7 +51,7 @@ function App() {
         )}
       </Body>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
