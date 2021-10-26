@@ -48,6 +48,8 @@
   "scripts": {
     "build": "react-scripts build",
     "eject": "react-scripts eject",
+    "format": "prettier --write 'src/**/*.js'",
+    "format-check": "prettier --check 'src/**/*.js'",
     "ipfs": "yarn build && node scripts/ipfs.js",
     "start": "react-scripts start",
     "test": "react-scripts test"
