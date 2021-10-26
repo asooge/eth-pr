@@ -16,14 +16,19 @@
     "react-app:build": "yarn workspace @project/react-app build",
     "react-app:eject": "yarn workspace @project/react-app eject",
     "react-app:ipfs": "yarn workspace @project/react-app ipfs",
+    "react-app:lint": "yarn workspace @project/react-app lint",
     "react-app:start": "yarn workspace @project/react-app start",
     "react-app:test": "yarn workspace @project/react-app test",
     "start": "yarn run react-app:start",
-    "test": "yarn run react-app:test"
+    "test": "yarn run react-app:test",
+    "prepare": "husky install"
   },
   "workspaces": {
     "packages": [
       "packages/*"
     ]
+  },
+  "devDependencies": {
+    "husky": "^7.0.0"
   }
 }

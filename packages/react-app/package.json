@@ -51,6 +51,7 @@
     "format": "prettier --write 'src/**/*.js'",
     "format-check": "prettier --check 'src/**/*.js'",
     "ipfs": "yarn build && node scripts/ipfs.js",
+    "lint": "eslint",
     "start": "react-scripts start",
     "test": "react-scripts test"
   },
