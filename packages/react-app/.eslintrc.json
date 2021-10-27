@@ -23,8 +23,8 @@
     ],
     "rules": {
         "indent": [
-            "error",
-            "tab"
+            "off",
+            2
         ],
         "linebreak-style": [
             "error",
