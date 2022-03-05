@@ -32,7 +32,7 @@ function App() {
         </Link>
         {provider && (
           <iframe
-            src="https://app.uniswap.org/#/swap?use=v1?outputCurrency=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359"
+            src="https://app.honeyswap.org/#/swap?outputCurrency=0x86BD4E732EEa037a39a663E0DB07346a33274364"
             height="660px"
             width="100%"
             style={{

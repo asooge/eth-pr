@@ -5,7 +5,7 @@ import Web3Modal from 'web3modal'
 
 // Enter a valid infura key here to avoid being rate limited
 // You can get a key for free at https://infura.io/register
-const INFURA_ID = 'INVALID_INFURA_KEY'
+const INFURA_ID = '419bd3de5eda4c1c8d452218ee1695c3'
 
 const NETWORK = 'mainnet'
 
@@ -25,6 +25,12 @@ function useWeb3Modal(config = {}) {
           package: WalletConnectProvider,
           options: {
             infuraId,
+            rpc: {
+              137: 'https://polygon-mainnet.infura.io/v3/419bd3de5eda4c1c8d452218ee1695c3',
+              80001:
+                'https://polygon-mumbai.infura.io/v3/419bd3de5eda4c1c8d452218ee1695c3',
+              100: 'https://rpc.xdaichain.com/',
+            },
           },
         },
       },
@@ -40,7 +46,8 @@ function useWeb3Modal(config = {}) {
   const logoutOfWeb3Modal = useCallback(
     async function () {
       await web3Modal.clearCachedProvider()
-      window.location.reload()
+      // window.location.reload()
+      setProvider()
     },
     [web3Modal],
   )
@@ -51,6 +58,7 @@ function useWeb3Modal(config = {}) {
       loadWeb3Modal()
       setAutoLoaded(true)
     }
+    return provider?.clearCachedProvider
   }, [
     autoLoad,
     autoLoaded,
