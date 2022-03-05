@@ -1,5 +1,5 @@
 {
-  "name": "@project/interface",
+  "name": "@eth-pr/interface",
   "version": "0.1.0",
   "private": true,
   "scripts": {

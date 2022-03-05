@@ -1,4 +1,4 @@
-import { addresses, abis } from '@project/contracts'
+import { addresses, abis } from '@eth-pr/contracts'
 import { Contract } from '@ethersproject/contracts'
 import { getDefaultProvider } from '@ethersproject/providers'
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from '../'
-import { fetchAccount } from '@project/react-app/src/lib/default'
+import { fetchAccount } from '@eth-pr/react-app/src/lib/default'
 
 /* eslint react/prop-types: 0 */
 export function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
