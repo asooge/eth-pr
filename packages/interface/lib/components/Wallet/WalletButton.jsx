@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button } from '../'
+import { Button } from '..'
 import { fetchAccount } from '@eth-pr/react-app/src/lib/default'
 
 /* eslint react/prop-types: 0 */
