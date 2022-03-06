@@ -1,5 +1,5 @@
-import Web3Modal from "web3modal"
-import WalletConnectProvider from "@walletconnect/web3-provider";
+import Web3Modal from 'web3modal'
+import WalletConnectProvider from '@walletconnect/web3-provider'
 import { Web3Provider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 
@@ -7,8 +7,7 @@ import { useEffect, useMemo, useState } from 'react'
 
 const infuraId = '3d4b1bc7b32f4f7ab78535b425450e8d'
 const rpc = {
-  [1]:
-    'https://mainnet.infura.io/v3/3d4b1bc7b32f4f7ab78535b425450e8d',
+  [1]: 'https://mainnet.infura.io/v3/3d4b1bc7b32f4f7ab78535b425450e8d',
   [137]:
     'https://polygon-mainnet.infura.io/v3/3d4b1bc7b32f4f7ab78535b425450e8d',
   [80001]:
@@ -20,7 +19,7 @@ const providerOptions = {
     package: WalletConnectProvider,
     options: { infuraId },
     rpc,
-  }
+  },
 }
 
 export const useWallet = () => {
@@ -55,14 +54,14 @@ export const useWallet = () => {
 
   useEffect(() => {
     if (provider) {
-      updateChainId() 
+      updateChainId()
       updateAddress()
     }
   }, [provider])
 
   const activate = async () => {
     const connector = await web3Modal?.connect()
-    connector.on("accountsChanged", (accounts: string[]) => {
+    connector.on('accountsChanged', (accounts: string[]) => {
       setAddress(accounts[0])
     })
     connector.on('chainChanged', (chainId: string) => {

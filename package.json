@@ -35,12 +35,12 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx, jsx}": [
-        "eslint --quiet --fix"
+      "eslint --quiet --fix"
     ],
     "*.{json,md,html,js,jsx,ts,tsx}": [
-        "prettier --write"
+      "prettier --write"
     ]
-},
+  },
   "devDependencies": {
     "husky": "^7.0.0",
     "eslint": "^8.1.0",
