@@ -4,8 +4,8 @@ import { Web3Provider } from '@ethersproject/providers'
 
 interface Props {
   provider: Web3Provider
-  loadWeb3Modal: () => void
-  logoutOfWeb3Modal: () => void
+  loadWeb3Modal: () => Promise<void>
+  logoutOfWeb3Modal: () => Promise<void>
 }
 
 export const WalletButton: React.FC<Props> = ({

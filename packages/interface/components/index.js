@@ -1,3 +1,5 @@
+// @TODO remove styled-component
+
 import styled from 'styled-components'
 
 export const Header = styled.header`
