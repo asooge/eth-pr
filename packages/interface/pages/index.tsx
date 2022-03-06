@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { Body, Header, Image, Link, WalletButton } from '../components'
-import useWeb3Modal from '../lib/hooks/useWeb3Modal'
+import { useWeb3Modal } from '../lib/hooks'
 
 const Home: NextPage = () => {
   const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal()

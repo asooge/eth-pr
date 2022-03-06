@@ -9,7 +9,7 @@ const INFURA_ID = '419bd3de5eda4c1c8d452218ee1695c3'
 
 const NETWORK = 'mainnet'
 
-function useWeb3Modal(config = {}) {
+export function useWeb3Modal(config = {}) {
   const [provider, setProvider] = useState<Web3Provider>()
   const [autoLoaded, setAutoLoaded] = useState(false)
   const {
