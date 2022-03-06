@@ -57,10 +57,10 @@ export const Header: React.FC<Props> = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false)
   const { isMobile } = useScreen()
   const toggleMenu = () => setMenuOpen(!menuOpen)
-  const mobileMenuRef = useRef(null)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
 
   const callback = (e: MouseEvent) => {
-    const clickInsideMenu = mobileMenuRef.current?.contains(e.target)
+    const clickInsideMenu = mobileMenuRef.current?.contains(e.target as Node)
     if (!clickInsideMenu) {
       toggleMenu()
     }
