@@ -4,8 +4,7 @@ import styles from '../styles/Home.module.css'
 import { Body, Header, Image, Link, WalletButton } from '../components'
 import { useWeb3Modal } from '../lib/hooks'
 import { Web3Provider } from '@ethersproject/providers'
-// @TODO fix types
-/* tslint:disable */
+
 const Home: NextPage = () => {
   const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal()
   return (
