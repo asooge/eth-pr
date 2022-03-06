@@ -12,7 +12,11 @@ const NETWORK = 'mainnet'
 function useWeb3Modal(config = {}) {
   const [provider, setProvider] = useState<Web3Provider>()
   const [autoLoaded, setAutoLoaded] = useState(false)
-  const { autoLoad = true, infuraId = INFURA_ID, network = NETWORK } = config as {
+  const {
+    autoLoad = true,
+    infuraId = INFURA_ID,
+    network = NETWORK,
+  } = config as {
     autoLoad: boolean
     infuraId: string
     network: string

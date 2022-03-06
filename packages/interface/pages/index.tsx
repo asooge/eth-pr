@@ -4,7 +4,6 @@ import styles from '../styles/Home.module.css'
 import { Body, Header, Image, Link, WalletButton } from '../components'
 import useWeb3Modal from '../lib/hooks/useWeb3Modal'
 
-
 const Home: NextPage = () => {
   const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal()
 
@@ -17,44 +16,47 @@ const Home: NextPage = () => {
       </Head>
 
       <div>
-      <Header>
-        <WalletButton
-          provider={provider}
-          loadWeb3Modal={loadWeb3Modal}
-          logoutOfWeb3Modal={logoutOfWeb3Modal}
-        />
-      </Header>
-      <Body>
-        <h1 style={{ marginBottom: '0' }}>ETH PR</h1>
-        <h3>coming soon</h3>
-        <Image src={'./ethereumLogo.png'} alt="react-logo" />
-        <Link href={'https://www.meetup.com/ethpuertorico/'} target={'_blank'}>
-          MEET ETH PR
-        </Link>
-        <Link href={'https://github.com/asooge/eth-pr'} target={'_blank'}>
-          CODE
-        </Link>
-        {provider && (
-          <iframe
-            src="https://app.honeyswap.org/#/swap?outputCurrency=0x86BD4E732EEa037a39a663E0DB07346a33274364"
-            height="660px"
-            width="100%"
-            style={{
-              border: '0',
-              margin: '0 auto',
-              display: 'block',
-              borderRadius: '10px',
-              padding: '32px 0',
-              maxWidth: '500px',
-              minWidth: '300px',
-              height: '720px',
-            }}
-            title="uniswap-iframe"
-            id="myId"
+        <Header>
+          <WalletButton
+            provider={provider}
+            loadWeb3Modal={loadWeb3Modal}
+            logoutOfWeb3Modal={logoutOfWeb3Modal}
           />
-        )}
-      </Body>
-    </div>
+        </Header>
+        <Body>
+          <h1 style={{ marginBottom: '0' }}>ETH PR</h1>
+          <h3>coming soon</h3>
+          <Image src={'./ethereumLogo.png'} alt="react-logo" />
+          <Link
+            href={'https://www.meetup.com/ethpuertorico/'}
+            target={'_blank'}
+          >
+            MEET ETH PR
+          </Link>
+          <Link href={'https://github.com/asooge/eth-pr'} target={'_blank'}>
+            CODE
+          </Link>
+          {provider && (
+            <iframe
+              src="https://app.honeyswap.org/#/swap?outputCurrency=0x86BD4E732EEa037a39a663E0DB07346a33274364"
+              height="660px"
+              width="100%"
+              style={{
+                border: '0',
+                margin: '0 auto',
+                display: 'block',
+                borderRadius: '10px',
+                padding: '32px 0',
+                maxWidth: '500px',
+                minWidth: '300px',
+                height: '720px',
+              }}
+              title="uniswap-iframe"
+              id="myId"
+            />
+          )}
+        </Body>
+      </div>
     </div>
   )
 }
