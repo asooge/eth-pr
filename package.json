@@ -26,8 +26,7 @@
     "lint": "yarn workspace @eth-pr/interface lint",
     "format": "prettier --write .",
     "format-check": "prettier --check .",
-    "prepare": "husky install",
-    "pre-push": "yarn vercel-build"
+    "prepare": "husky install"
   },
   "workspaces": {
     "packages": [
