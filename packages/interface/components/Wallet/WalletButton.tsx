@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button } from '..'
-import { fetchAccount } from '@eth-pr/react-app/src/lib/default'
+import { Web3Provider } from '@ethersproject/providers'
 
-export function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
+interface Props {
+  provider: Web3Provider
+  loadWeb3Modal: () => Promise<void>
+  logoutOfWeb3Modal: () => Promise<void>
+}
+
+export const WalletButton: React.FC<Props> = ({
+  provider,
+  loadWeb3Modal,
+  logoutOfWeb3Modal,
+}) => {
   const [account, setAccount] = useState('')
   const [rendered, setRendered] = useState('')
   console.log({ account, rendered })
-  // useEffect(() => {
-  //   fetchAccount(provider, account, setAccount, setRendered)
-  // }, [account, provider, setAccount, setRendered])
 
   return (
     <Button
