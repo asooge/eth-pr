@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Body, Header, Image, Link, Page, WalletButton } from '../components'
+import { Body, Header, Image, Page, WalletButton } from '../components'
 import { useWeb3Modal } from '../lib/hooks'
 import { Web3Provider } from '@ethersproject/providers'
 
@@ -23,18 +23,10 @@ const Home: NextPage = () => {
           />
         </Header>
         <Body>
-          <h1 style={{ marginBottom: '0' }}>ETH PR</h1>
+          <h1 style={{ paddingTop: '32px' }}>ETH PR</h1>
           <h3>coming soon</h3>
           <Image src={'./ethereumLogo.png'} alt="react-logo" />
-          <Link
-            href={'https://www.meetup.com/ethpuertorico/'}
-            target={'_blank'}
-          >
-            MEET ETH PR
-          </Link>
-          <Link href={'https://github.com/asooge/eth-pr'} target={'_blank'}>
-            CODE
-          </Link>
+
           {provider && (
             <iframe
               src="https://app.honeyswap.org/#/swap?outputCurrency=0x86BD4E732EEa037a39a663E0DB07346a33274364"

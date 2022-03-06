@@ -8,8 +8,8 @@ const style: React.CSSProperties = {
   color: 'white',
   display: 'flex',
   flexDirection: 'column',
-  fontSize: 'calc(10px + 2vmin)',
-  justifyContent: 'center',
+  fontSize: 'calc(10px + 2vh)',
+  justifyContent: 'flex-start',
   minHeight: 'calc(100vh - 70px)',
 }
 
