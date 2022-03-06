@@ -21,10 +21,11 @@
     "react-app:lint": "yarn workspace @eth-pr/react-app lint",
     "react-app:start": "yarn workspace @eth-pr/react-app start",
     "react-app:test": "yarn workspace @eth-pr/react-app test",
-    "start": "yarn run react-app:start",
+    "dev": "yarn workspace @eth-pr/interface next dev",
     "test": "yarn run react-app:test",
     "lint": "yarn workspace @eth-pr/react-app lint",
-    "format-check": "yarn workspace @eth-pr/react-app format-check",
+    "format": "prettier --write .",
+    "format-check": "prettier --check .",
     "prepare": "husky install"
   },
   "workspaces": {
@@ -32,7 +33,21 @@
       "packages/*"
     ]
   },
+  "lint-staged": {
+    "*.{js,ts,tsx, jsx}": [
+        "eslint --quiet --fix"
+    ],
+    "*.{json,md,html,js,jsx,ts,tsx}": [
+        "prettier --write"
+    ]
+},
   "devDependencies": {
-    "husky": "^7.0.0"
+    "husky": "^7.0.0",
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.26.1",
+    "lint-staged": "^11.2.6",
+    "prettier": "2.4.1",
+    "typescript": "^4.4.4"
   }
 }
