@@ -23,7 +23,7 @@
     "react-app:test": "yarn workspace @eth-pr/react-app test",
     "dev": "yarn workspace @eth-pr/interface next dev",
     "test": "yarn run react-app:test",
-    "lint": "yarn workspace @eth-pr/react-app lint",
+    "lint": "yarn workspace @eth-pr/interface lint",
     "format": "prettier --write .",
     "format-check": "prettier --check .",
     "prepare": "husky install"
