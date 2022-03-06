@@ -1,23 +1,14 @@
-import { Button, Link } from '../../components'
+import { Button, Link, Image } from '../../components'
 import { useScreen } from '../../lib/hooks'
 import React, { useEffect, useState, useRef } from 'react'
+
 interface Props {
   children: React.ReactNode
 }
 
 const headerStyle: React.CSSProperties = {
-  backgroundColor: '#2c384e' || `#282c34`,
-  minHeight: `70px`,
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'flex-end',
-  color: 'white',
-}
-
-const mobileHeaderStyle: React.CSSProperties = {
-  backgroundColor: '#2c384e' || `#282c34`,
-  minHeight: `70px`,
+  backgroundColor: '#e1bf92' || '#2c384e' || `#282c34`,
+  height: `70px`,
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
@@ -27,15 +18,15 @@ const mobileHeaderStyle: React.CSSProperties = {
 
 const navLinks = [
   {
-    title: 'MEET',
+    title: 'Meet',
     href: 'https://www.meetup.com/ethpuertorico/',
   },
   {
-    title: 'CODE',
+    title: 'Code',
     href: 'https://github.com/asooge/eth-pr',
   },
   {
-    title: 'GARDEN',
+    title: 'DAO',
     href: 'https://gardens.1hive.org/#/xdai/garden/0xc6ebf5931138187349a8e73118d208cc9dcfb6ce/',
   },
 ]
@@ -45,12 +36,21 @@ const containerStyle: React.CSSProperties = {
 }
 
 const mobileMenuStyle: React.CSSProperties = {
-  backgroundColor: '#2c384e',
+  backgroundColor: '#e1bf92' || '#2c384e',
   position: 'fixed',
   top: '70px',
   display: 'flex',
   flexDirection: 'column',
   minWidth: '50vw',
+  padding: '10px 0 20px',
+}
+
+const mobileMenuButtonStyle: React.CSSProperties = {
+  backgroundColor: '#f6d7b0',
+  width: '70px',
+  height: '70px',
+  display: 'flex',
+  justifyContent: 'center',
 }
 
 export const Header: React.FC<Props> = ({ children }) => {
@@ -74,8 +74,16 @@ export const Header: React.FC<Props> = ({ children }) => {
   }, [menuOpen])
 
   return (
-    <header style={isMobile ? headerStyle : mobileHeaderStyle}>
-      {isMobile && <Button onClick={toggleMenu}>Ham</Button>}
+    <header style={headerStyle}>
+      {isMobile && (
+        <div style={mobileMenuButtonStyle} onClick={toggleMenu}>
+          <Image
+            style={{ width: '45px', height: '45px', margin: 'auto' }}
+            alt="menu"
+            src={'./menu-icon.png'}
+          />
+        </div>
+      )}
       {(menuOpen || !isMobile) && (
         <>
           <div
