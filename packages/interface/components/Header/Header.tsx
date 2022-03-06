@@ -59,7 +59,7 @@ export const Header: React.FC<Props> = ({ children }) => {
   const toggleMenu = () => setMenuOpen(!menuOpen)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
 
-  const callback = (e: MouseEvent) => {
+  const callback = (e: Event) => {
     const clickInsideMenu = mobileMenuRef.current?.contains(e.target as Node)
     if (!clickInsideMenu) {
       toggleMenu()
@@ -67,8 +67,14 @@ export const Header: React.FC<Props> = ({ children }) => {
   }
 
   useEffect(() => {
-    const listen = () => window.addEventListener('click', callback)
-    const unlisten = () => window.removeEventListener('click', callback)
+    const listen = () => {
+      window.addEventListener('click', callback)
+      window.addEventListener('scroll', callback)
+    }
+    const unlisten = () => {
+      window.removeEventListener('click', callback)
+      window.removeEventListener('scroll', callback)
+    }
     menuOpen ? listen() : unlisten()
     return unlisten
   }, [menuOpen])
