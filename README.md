@@ -60,7 +60,13 @@ Owing to this dependency on Yarn Workspaces, Create Eth App can't be used with n
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the root directory, you can run:
+
+`yarn`: install app dependencies
+
+`yarn dev`: run app dev server
+
+`yarn format`: format codebase
 
 ### React App
 
