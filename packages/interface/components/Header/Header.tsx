@@ -1,10 +1,8 @@
-import { Button, Link, Image } from '../../components'
+import { Button, Image, WalletButton, useWallet } from '../../components'
+import { useRouter } from 'next/router'
 import { useScreen } from '../../lib/hooks'
 import React, { useEffect, useState, useRef } from 'react'
-
-interface Props {
-  children: React.ReactNode
-}
+import { Web3Provider } from '@ethersproject/providers'
 
 const headerStyle: React.CSSProperties = {
   backgroundColor: '#e1bf92' || '#2c384e' || `#282c34`,
@@ -18,16 +16,20 @@ const headerStyle: React.CSSProperties = {
 
 const navLinks = [
   {
+    title: 'Home',
+    href: '/',
+  },
+  {
     title: 'Meet',
-    href: 'https://www.meetup.com/ethpuertorico/',
+    href: '/meet',
   },
   {
     title: 'Code',
-    href: 'https://github.com/asooge/eth-pr',
+    href: '/code',
   },
   {
     title: 'DAO',
-    href: 'https://gardens.1hive.org/#/xdai/garden/0xc6ebf5931138187349a8e73118d208cc9dcfb6ce/',
+    href: '/dao',
   },
 ]
 
@@ -53,9 +55,11 @@ const mobileMenuButtonStyle: React.CSSProperties = {
   justifyContent: 'center',
 }
 
-export const Header: React.FC<Props> = ({ children }) => {
+export const Header: React.FC = () => {
+  const router = useRouter()
+  const { provider, loadWeb3Modal, logoutOfWeb3Modal } = useWallet()
   const [menuOpen, setMenuOpen] = useState(false)
-  const { isMobile } = useScreen()
+  const { isMobile } = useScreen(705)
   const toggleMenu = () => setMenuOpen(!menuOpen)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
 
@@ -64,6 +68,11 @@ export const Header: React.FC<Props> = ({ children }) => {
     if (!clickInsideMenu) {
       toggleMenu()
     }
+  }
+
+  const handleNavigate = (route: string) => {
+    router.push(route)
+    toggleMenu()
   }
 
   useEffect(() => {
@@ -96,15 +105,33 @@ export const Header: React.FC<Props> = ({ children }) => {
             ref={mobileMenuRef}
             style={isMobile ? mobileMenuStyle : containerStyle}
           >
-            {isMobile && <div style={{ marginTop: '10px' }}>{children}</div>}
+            {isMobile && (
+              <div style={{ marginTop: '10px' }}>
+                {
+                  <WalletButton
+                    provider={provider as Web3Provider}
+                    loadWeb3Modal={loadWeb3Modal as () => Promise<void>}
+                    logoutOfWeb3Modal={logoutOfWeb3Modal as () => Promise<void>}
+                  />
+                }
+              </div>
+            )}
             {navLinks.map((link) => (
-              <Link key={link.title} href={link.href} target={'_blank'}>
-                <Button>{link.title}</Button>
-              </Link>
+              <Button key={link.title} onClick={() => handleNavigate(link.href)}>
+                {link.title}
+              </Button>
             ))}
           </div>
           {!isMobile && (
-            <div style={isMobile ? { marginTop: '10px' } : {}}>{children}</div>
+            <div style={isMobile ? { marginTop: '10px' } : {}}>
+              {
+                <WalletButton
+                  provider={provider as Web3Provider}
+                  loadWeb3Modal={loadWeb3Modal as () => Promise<void>}
+                  logoutOfWeb3Modal={logoutOfWeb3Modal as () => Promise<void>}
+                />
+              }
+            </div>
           )}
         </>
       )}

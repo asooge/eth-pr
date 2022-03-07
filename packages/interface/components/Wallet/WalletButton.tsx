@@ -15,7 +15,6 @@ export const WalletButton: React.FC<Props> = ({
 }) => {
   const [account, setAccount] = useState('')
   const [rendered, setRendered] = useState('')
-  console.log({ account, rendered })
 
   return (
     <Button

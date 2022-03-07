@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react'
 
-export const useScreen = () => {
-  const [width, setWidth] = useState(window.innerWidth)
+export const useScreen = (defaultWidth: number) => {
+  const [width, setWidth] = useState(0)
   const syncWidth = () => {
     setWidth(window.innerWidth)
   }
 
   useEffect(() => {
+    syncWidth()
     window.addEventListener('resize', syncWidth)
-    return () => window.removeEventListener('resize', syncWidth)
+    return () => {
+      window.removeEventListener('resize', syncWidth)
+    }
   }, [])
 
-  const isMobile = width <= 650
+  const mobileWidth = defaultWidth || 650
+  const isMobile = width <= mobileWidth
   return {
     isMobile,
   }
