@@ -1,10 +1,8 @@
-import { Button, Link, Image } from '../../components'
+import { Button, Image, WalletButton, useWallet } from '../../components'
+import { useRouter } from 'next/router'
 import { useScreen } from '../../lib/hooks'
 import React, { useEffect, useState, useRef } from 'react'
-
-interface Props {
-  children: React.ReactNode
-}
+import { Web3Provider } from '@ethersproject/providers'
 
 const headerStyle: React.CSSProperties = {
   backgroundColor: '#e1bf92' || '#2c384e' || `#282c34`,
@@ -18,16 +16,20 @@ const headerStyle: React.CSSProperties = {
 
 const navLinks = [
   {
+    title: 'Home',
+    href: '/',
+  },
+  {
     title: 'Meet',
-    href: 'https://www.meetup.com/ethpuertorico/',
+    href: '/meet',
   },
   {
     title: 'Code',
-    href: 'https://github.com/asooge/eth-pr',
+    href: '/code',
   },
   {
     title: 'DAO',
-    href: 'https://gardens.1hive.org/#/xdai/garden/0xc6ebf5931138187349a8e73118d208cc9dcfb6ce/',
+    href: '/dao',
   },
 ]
 
@@ -53,22 +55,35 @@ const mobileMenuButtonStyle: React.CSSProperties = {
   justifyContent: 'center',
 }
 
-export const Header: React.FC<Props> = ({ children }) => {
+export const Header: React.FC = () => {
+  const router = useRouter()
+  const { provider, loadWeb3Modal, logoutOfWeb3Modal } = useWallet()
   const [menuOpen, setMenuOpen] = useState(false)
-  const { isMobile } = useScreen()
+  const { isMobile } = useScreen(705)
   const toggleMenu = () => setMenuOpen(!menuOpen)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
 
-  const callback = (e: MouseEvent) => {
+  const callback = (e: Event) => {
     const clickInsideMenu = mobileMenuRef.current?.contains(e.target as Node)
     if (!clickInsideMenu) {
       toggleMenu()
     }
   }
 
+  const handleNavigate = (route: string) => {
+    router.push(route)
+    toggleMenu()
+  }
+
   useEffect(() => {
-    const listen = () => window.addEventListener('click', callback)
-    const unlisten = () => window.removeEventListener('click', callback)
+    const listen = () => {
+      window.addEventListener('click', callback)
+      window.addEventListener('scroll', callback)
+    }
+    const unlisten = () => {
+      window.removeEventListener('click', callback)
+      window.removeEventListener('scroll', callback)
+    }
     menuOpen ? listen() : unlisten()
     return unlisten
   }, [menuOpen])
@@ -90,15 +105,42 @@ export const Header: React.FC<Props> = ({ children }) => {
             ref={mobileMenuRef}
             style={isMobile ? mobileMenuStyle : containerStyle}
           >
-            {isMobile && <div style={{ marginTop: '10px' }}>{children}</div>}
-            {navLinks.map((link) => (
-              <Link key={link.title} href={link.href} target={'_blank'}>
-                <Button>{link.title}</Button>
-              </Link>
+            {isMobile && (
+              <div style={{ marginTop: '10px' }}>
+                {
+                  <WalletButton
+                    provider={provider as Web3Provider}
+                    loadWeb3Modal={loadWeb3Modal as () => Promise<void>}
+                    logoutOfWeb3Modal={logoutOfWeb3Modal as () => Promise<void>}
+                    style={{ marginBottom: '10px' }}
+                  />
+                }
+              </div>
+            )}
+            {navLinks.map((link, i) => (
+              <Button
+                key={link.title}
+                onClick={() => handleNavigate(link.href)}
+                style={
+                  isMobile && i < navLinks.length - 1
+                    ? { marginBottom: '10px' }
+                    : {}
+                }
+              >
+                {link.title}
+              </Button>
             ))}
           </div>
           {!isMobile && (
-            <div style={isMobile ? { marginTop: '10px' } : {}}>{children}</div>
+            <div style={isMobile ? { marginTop: '10px' } : {}}>
+              {
+                <WalletButton
+                  provider={provider as Web3Provider}
+                  loadWeb3Modal={loadWeb3Modal as () => Promise<void>}
+                  logoutOfWeb3Modal={logoutOfWeb3Modal as () => Promise<void>}
+                />
+              }
+            </div>
           )}
         </>
       )}

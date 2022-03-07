@@ -25,6 +25,7 @@ export function useWeb3Modal(config = {}) {
   // Web3Modal also supports many other wallets.
   // You can see other options at https://github.com/Web3Modal/web3modal
   const web3Modal = useMemo(() => {
+    if (typeof window === 'undefined') return {} as Web3Modal
     return new Web3Modal({
       network,
       cacheProvider: true,
