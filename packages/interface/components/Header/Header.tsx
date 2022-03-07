@@ -117,7 +117,10 @@ export const Header: React.FC = () => {
               </div>
             )}
             {navLinks.map((link) => (
-              <Button key={link.title} onClick={() => handleNavigate(link.href)}>
+              <Button
+                key={link.title}
+                onClick={() => handleNavigate(link.href)}
+              >
                 {link.title}
               </Button>
             ))}
