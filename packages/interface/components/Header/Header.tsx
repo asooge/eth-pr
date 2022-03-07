@@ -112,14 +112,20 @@ export const Header: React.FC = () => {
                     provider={provider as Web3Provider}
                     loadWeb3Modal={loadWeb3Modal as () => Promise<void>}
                     logoutOfWeb3Modal={logoutOfWeb3Modal as () => Promise<void>}
+                    style={{ marginBottom: '10px' }}
                   />
                 }
               </div>
             )}
-            {navLinks.map((link) => (
+            {navLinks.map((link, i) => (
               <Button
                 key={link.title}
                 onClick={() => handleNavigate(link.href)}
+                style={
+                  isMobile && i < navLinks.length - 1
+                    ? { marginBottom: '10px' }
+                    : {}
+                }
               >
                 {link.title}
               </Button>
