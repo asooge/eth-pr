@@ -62,13 +62,25 @@ Owing to this dependency on Yarn Workspaces, Create Eth App can't be used with n
 
 ## Getting Started
 
-In the root directory, you can run:
+In the root directory, run:
 
-#### `yarn`: install app dependencies
+```bash
+yarn
+```
 
-#### `yarn dev`: run app dev server
+to install app dependencies
 
-#### `yarn format`: format codebase
+```bash
+yarn dev
+```
+
+to run app dev server on http://localhost:3000
+
+```bash
+yarn format
+```
+
+optional to format codebase, also done automatically pre-commit
 
 ### Next App: `packages/interface`
 
