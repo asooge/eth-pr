@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from '..'
+import { WalletModal } from './WalletModal'
+import { useDisclosure } from '@chakra-ui/react'
 import { Web3Provider } from '@ethersproject/providers'
 
 interface Props {
@@ -15,21 +17,26 @@ export const WalletButton: React.FC<Props> = ({
   logoutOfWeb3Modal,
   style = {},
 }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const [account, setAccount] = useState('')
   const [rendered, setRendered] = useState('')
 
   return (
-    <Button
-      style={style}
-      onClick={() => {
-        if (!provider) {
-          loadWeb3Modal()
-        } else {
-          logoutOfWeb3Modal()
-        }
-      }}
-    >
-      {provider ? 'Disconnect' : 'Connect Wallet'}
-    </Button>
+    <>
+      <Button
+        style={style}
+        onClick={() => {
+          onOpen()
+          // if (!provider) {
+          //   loadWeb3Modal()
+          // } else {
+          //   logoutOfWeb3Modal()
+          // }
+        }}
+      >
+        {provider ? 'Disconnect' : 'Connect Wallet'}
+      </Button>
+      <WalletModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+    </>
   )
 }

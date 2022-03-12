@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import { ChakraProvider } from '@chakra-ui/provider'
 import { Header, Page, WalletProvider } from '../components'
 import Head from 'next/head'
 import {
@@ -44,12 +45,14 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         <meta name="description" content="ETH PR DAO frontend interface" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <DAppProvider config={config}>
-        <WalletProvider>
-          <Header />
-          <Component {...pageProps} />
-        </WalletProvider>
-      </DAppProvider>
+      <ChakraProvider>
+        <DAppProvider config={config}>
+          <WalletProvider>
+            <Header />
+            <Component {...pageProps} />
+          </WalletProvider>
+        </DAppProvider>
+      </ChakraProvider>
     </Page>
   )
 }
