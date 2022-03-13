@@ -20,6 +20,10 @@ const navLinks = [
     href: '/',
   },
   {
+    title: 'Profile',
+    href: '/profile',
+  },
+  {
     title: 'Meet',
     href: '/meet',
   },

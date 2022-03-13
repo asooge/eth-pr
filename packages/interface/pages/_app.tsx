@@ -34,7 +34,7 @@ const config: Config = {
       'https://polygon-mainnet.infura.io/v3/419bd3de5eda4c1c8d452218ee1695c3',
     [Harmony.chainId]: 'https://rpc.s0.t.hmny.io/',
   },
-  multicallVersion: 2,
+  // multicallVersion: 2,
 }
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
