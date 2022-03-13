@@ -15,6 +15,8 @@ import {
   Harmony,
   xDai,
 } from '@usedapp/core'
+import { ColorModeScript } from '@chakra-ui/color-mode'
+import theme from '../theme'
 
 const config: Config = {
   readOnlyChainId: Mainnet.chainId,
@@ -45,6 +47,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         <meta name="description" content="ETH PR DAO frontend interface" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <ChakraProvider>
         <DAppProvider config={config}>
           <WalletProvider>
