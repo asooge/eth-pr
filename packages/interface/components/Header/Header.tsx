@@ -20,6 +20,10 @@ const navLinks = [
     href: '/',
   },
   {
+    title: 'Profile',
+    href: '/profile',
+  },
+  {
     title: 'Meet',
     href: '/meet',
   },
@@ -107,14 +111,7 @@ export const Header: React.FC = () => {
           >
             {isMobile && (
               <div style={{ marginTop: '10px' }}>
-                {
-                  <WalletButton
-                    provider={provider as Web3Provider}
-                    loadWeb3Modal={loadWeb3Modal as () => Promise<void>}
-                    logoutOfWeb3Modal={logoutOfWeb3Modal as () => Promise<void>}
-                    style={{ marginBottom: '10px' }}
-                  />
-                }
+                {<WalletButton style={{ marginBottom: '10px' }} />}
               </div>
             )}
             {navLinks.map((link, i) => (
@@ -133,13 +130,7 @@ export const Header: React.FC = () => {
           </div>
           {!isMobile && (
             <div style={isMobile ? { marginTop: '10px' } : {}}>
-              {
-                <WalletButton
-                  provider={provider as Web3Provider}
-                  loadWeb3Modal={loadWeb3Modal as () => Promise<void>}
-                  logoutOfWeb3Modal={logoutOfWeb3Modal as () => Promise<void>}
-                />
-              }
+              {<WalletButton style={isMobile ? { width: '155px' } : {}} />}
             </div>
           )}
         </>

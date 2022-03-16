@@ -11,13 +11,18 @@
     "format-check": "prettier --check ."
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.8.6",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "@ethersproject/bignumber": "^5.5.0",
     "@ethersproject/providers": "^5.5.3",
+    "@usedapp/core": "^0.11.0",
     "@walletconnect/web3-provider": "^1.7.1",
     "@web3-react/core": "8.0.12-beta.0",
     "@web3-react/metamask": "8.0.8-beta.0",
     "@web3-react/types": "8.0.5-beta.0",
     "@web3-react/walletconnect": "8.0.13-beta.0",
+    "framer-motion": "^6",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",

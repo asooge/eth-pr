@@ -1,35 +1,25 @@
-import React, { useState } from 'react'
 import { Button } from '..'
-import { Web3Provider } from '@ethersproject/providers'
+import { WalletModal } from './WalletModal'
+import { useDisclosure } from '@chakra-ui/react'
+import { useEthers } from '@usedapp/core'
 
 interface Props {
-  provider: Web3Provider
-  loadWeb3Modal: () => Promise<void>
-  logoutOfWeb3Modal: () => Promise<void>
   style?: React.CSSProperties
 }
 
-export const WalletButton: React.FC<Props> = ({
-  provider,
-  loadWeb3Modal,
-  logoutOfWeb3Modal,
-  style = {},
-}) => {
-  const [account, setAccount] = useState('')
-  const [rendered, setRendered] = useState('')
+export const WalletButton: React.FC<Props> = ({ style = {} }) => {
+  const { account, deactivate } = useEthers()
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <Button
-      style={style}
-      onClick={() => {
-        if (!provider) {
-          loadWeb3Modal()
-        } else {
-          logoutOfWeb3Modal()
-        }
-      }}
-    >
-      {provider ? 'Disconnect' : 'Connect Wallet'}
-    </Button>
+    <>
+      <Button
+        style={{ minWidth: '155px', ...style }}
+        onClick={account ? deactivate : onOpen}
+      >
+        {account ? 'Disconnect' : 'Connect Wallet'}
+      </Button>
+      <WalletModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+    </>
   )
 }
